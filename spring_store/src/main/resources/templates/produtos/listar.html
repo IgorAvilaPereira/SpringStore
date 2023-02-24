@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>title</title>
+        <link rel="stylesheet" href="/estilo.css"/>
+    </head>
+    <body>
+        <h1>Lista de Produtos</h1>
+        <ul>
+            {{#vetProduto}}
+            <li><a href="/produtos/deletar/{{id}}">Deletar</a> <a href="/produtos/tela_editar/{{id}}">Editar</a>  {{descricao}}</li>
+            {{/vetProduto}}
+        </ul>
+        <a href="/produtos/tela_adicionar">Adicionar</a>
+    </body>
+</html>
+
+
