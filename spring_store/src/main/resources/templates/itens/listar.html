@@ -11,6 +11,9 @@
                 <a href="/itens/deletar/{{id}}">Remove</a> <a href="/itens/tela_editar/{{id}}">Edit</a>  {{produto.descricao}} - {{quantidade}}
             </li>
             {{/vetItem}}
+            {{^vetItem}}
+                There are no items
+            {{/vetItem}}
         </ul>
         <a href="/itens/tela_adicionar/{{venda_id}}">Add Item</a> <br>
         <a href="/">Back</a>

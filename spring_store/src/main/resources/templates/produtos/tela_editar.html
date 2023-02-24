@@ -10,6 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <h1>Edit Product #{{produto.id}}</h1> 
         <form action="/produtos/editar" method="post">
             Description: <input type="text" name="descricao" value="{{produto.descricao}}"> <br>
             Price: <input type="number" name="preco" value="{{produto.preco}}"> <br>
@@ -17,5 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="hidden" name="id"  value="{{produto.id}}">
             <input type="submit" value="Edit">
         </form>
+        <br>
+        <a href="/produtos/">Back</a>    
     </body>
 </html>
