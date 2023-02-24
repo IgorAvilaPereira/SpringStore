@@ -42,8 +42,8 @@ public class VendaRepository implements IRepository<Venda> {
 
     @Override
     public void save(Venda t) {
-        String sqlInsert = "INSERT INTO venda (data_hora) VALUES (?)";
-        jdbcTemplate.update(sqlInsert, t.getDataHora());
+        String sqlInsert = "INSERT INTO venda (data_hora) VALUES (CURRENT_TIMESTAMP) RETURNING id";        
+        t.setId(jdbcTemplate.queryForObject(sqlInsert, Integer.class));
     }
 
     @Override

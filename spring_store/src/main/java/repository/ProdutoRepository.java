@@ -38,6 +38,10 @@ public class ProdutoRepository implements IRepository<Produto> {
         return jdbcTemplate.query("SELECT * from produto", BeanPropertyRowMapper.newInstance(Produto.class));
     }
 
+    public List<Produto> list(int venda_id) {
+        return jdbcTemplate.query("SELECT * from produto where produto.id not in (SELECT produto.id from produto inner join item on (produto.id = item.produto_id) where item.venda_id = ?)", BeanPropertyRowMapper.newInstance(Produto.class), venda_id);
+    }
+
     @Override
     public void save(Produto t) {
         String sqlInsert = "INSERT INTO produto (descricao, preco, estoque) VALUES (?,?,?)";
@@ -49,4 +53,5 @@ public class ProdutoRepository implements IRepository<Produto> {
         String sqlSelect = "SELECT * FROM produto WHERE id = ?;";
         return jdbcTemplate.queryForObject(sqlSelect, BeanPropertyRowMapper.newInstance(Produto.class), id);
     }
+
 }

@@ -25,19 +25,23 @@ import repository.VendaRepository;
 @RequestMapping(value = "/vendas")
 @ComponentScan("repository.")
 public class VendaController {
-
     @Autowired
     private VendaRepository vendaRepository;
+    @Autowired
+    private ItemController itemController;
+    @Autowired
+    private HomeController homeController;
 
+    /*
     @GetMapping("/tela_adicionar")
     public ModelAndView tela_adicionar() {
         return new ModelAndView("vendas/tela_adicionar");
-    }
+    }*/
 
-    @PostMapping("/adicionar")
-    public ModelAndView adicionar(Venda produto) {
-        this.vendaRepository.save(produto);
-        return this.listar();
+    @GetMapping("/adicionar")
+    public ModelAndView adicionar(Venda venda) {
+        this.vendaRepository.save(venda);
+        return this.itemController.listar(venda.getId());
     }
 
     @GetMapping({"/", "/listar"})
@@ -50,19 +54,19 @@ public class VendaController {
     @GetMapping("/deletar/{id}")
     public ModelAndView deletar(@PathVariable("id") int id) {
         this.vendaRepository.delete(id);
-        return this.listar();
+        return this.homeController.index();
     }
 
     @GetMapping("/tela_editar/{id}")
     public ModelAndView tela_editar(@PathVariable("id") int id) {
         Map<String, Object> template = new HashMap();
-        template.put("produto", this.vendaRepository.load(id));
+        template.put("venda", this.vendaRepository.load(id));
         return new ModelAndView("vendas/tela_editar", template);
     }
 
     @PostMapping("/editar")
-    public ModelAndView editar(Venda produto) {
-        this.vendaRepository.update(produto);
+    public ModelAndView editar(Venda venda) {
+        this.vendaRepository.update(venda);
         return this.listar();
     }
 }

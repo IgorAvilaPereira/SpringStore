@@ -4,18 +4,31 @@
  */
 package controller;
 
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import repository.ItemRepository;
+import repository.VendaRepository;
 
 /**
  *
  * @author iapereira
  */
 @Controller
-public class HomeController {     
+@ComponentScan("repository.")
+public class HomeController {
+
+    @Autowired
+    private VendaRepository vendaRepository;
+
     @GetMapping("/")
     public ModelAndView index() {
-        return new ModelAndView("index");
-    } 
+        Map<String, Object> template = new HashMap();
+        template.put("vetVenda", this.vendaRepository.list());
+        return new ModelAndView("index", template);
+    }
 }

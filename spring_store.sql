@@ -20,7 +20,7 @@ CREATE TABLE item (
     id serial primary key,
     quantidade double precision,
     produto_id integer references produto (id),
-    venda_id integer references venda (id),
+    venda_id integer references venda (id) ON DELETE CASCADE,
     UNIQUE(produto_id, venda_id)
 );
 

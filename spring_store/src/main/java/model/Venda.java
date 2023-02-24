@@ -13,6 +13,7 @@ import java.util.List;
  * @author iapereira
  */
 public class Venda {
+
     private int id;
     private LocalDate dataHora;
     private List<Item> itens;
@@ -20,8 +21,6 @@ public class Venda {
     public Venda() {
         this.itens = new ArrayList<>();
     }
-    
-    
 
     public int getId() {
         return id;
@@ -46,6 +45,11 @@ public class Venda {
     public void setItens(List<Item> itens) {
         this.itens = itens;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Venda{" + "id=" + id + ", dataHora=" + dataHora + ", itens=" + itens + '}';
+    }
+
     
 }
