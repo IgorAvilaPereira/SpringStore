@@ -29,8 +29,8 @@ public class ItemRepository implements IRepository<Item> {
 
     @Override
     public void update(Item t) {
-        String sqlUpdate = "UPDATE item SET quantidade = ? WHERE produto_id = ?  AND venda_id = ?";
-        jdbcTemplate.update(sqlUpdate, t.getQuantidade(), t.getProduto().getId(), t.getVenda().getId());
+        String sqlUpdate = "UPDATE item SET quantidade = ? WHERE id = ?";
+        jdbcTemplate.update(sqlUpdate, t.getQuantidade(), t.getId());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ItemRepository implements IRepository<Item> {
 
     @Override
     public Item load(int id) {
-        String sqlSelect = "SELECT * FROM item WHERE id = ?;";
-        return jdbcTemplate.queryForObject(sqlSelect, BeanPropertyRowMapper.newInstance(Item.class), id);
+        String sqlSelectByVenda = "SELECT item.id as id, item.quantidade as quantidade, item.produto_id, produto.descricao, produto.estoque, item.venda_id, venda.data_hora from item inner join produto on (item.produto_id = produto.id) inner join venda on (venda.id = item.venda_id) WHERE item.id = ?";
+        return jdbcTemplate.queryForObject(sqlSelectByVenda, new Item(), id);        
     }
 }

@@ -6,6 +6,7 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZoneId;
 import org.springframework.jdbc.core.RowMapper;
 
 /**
@@ -13,7 +14,6 @@ import org.springframework.jdbc.core.RowMapper;
  * @author iapereira
  */
 public class Item implements RowMapper<Item> {
-
     private int id;
     private double quantidade;
     private Produto produto;
@@ -31,7 +31,7 @@ public class Item implements RowMapper<Item> {
         item.setProduto(produto);
         Venda venda = new Venda();
         venda.setId(rs.getInt("venda_id"));
-//        venda.setDataHora(rs.getD("data_hora"));
+        venda.setDataHora(rs.getTimestamp("data_hora").toLocalDateTime().toLocalDate());
         item.setVenda(venda);
         return item;
 

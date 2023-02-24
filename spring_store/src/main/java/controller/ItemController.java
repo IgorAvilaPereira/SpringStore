@@ -58,20 +58,25 @@ public class ItemController {
 
     @GetMapping("/deletar/{id}")
     public ModelAndView deletar(@PathVariable("id") int id) {
-        Item item = this.itemRepository.load(id);
+        Item item = this.itemRepository.load(id);   
+        int venda_id = item.getVenda().getId();
         this.itemRepository.delete(id);
-        return this.listar(item.getVenda().getId());
+        return this.listar(venda_id);
     }
 
     @GetMapping("/tela_editar/{id}")
     public ModelAndView tela_editar(@PathVariable("id") int id) {
         Map<String, Object> template = new HashMap();
-        template.put("item", this.itemRepository.load(id));
+        Item item = this.itemRepository.load(id);
+        template.put("item_id", item.getId());
+        template.put("quantidade", item.getQuantidade());
         return new ModelAndView("itens/tela_editar", template);
     }
 
     @PostMapping("/editar")
-    public ModelAndView editar(Item item) {
+    public ModelAndView editar(int item_id, double quantidade) {
+        Item item = this.itemRepository.load(item_id);
+        item.setQuantidade(quantidade);
         this.itemRepository.update(item);
         return this.listar(item.getVenda().getId());
     }

@@ -11,9 +11,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <form action="/itens/editar" method="post">            
-            Quantity: <input type="number" name="quantidade">           
-            Produto: <input type="number" name="produto_id">           
-            <input type="hidden" name="venda_id" value="{{venda_id}}">           
+            Quantity: <input type="number" name="quantidade" value="{{quantidade}}">                                   
+            <input type="hidden" name="item_id" value="{{item_id}}">           
             <input type="submit" value="Edit">
         </form>
     </body>
