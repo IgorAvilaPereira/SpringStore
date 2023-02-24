@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <form action="/itens/adicionar" method="post">            
-            Quantity: <input type="number" name="quantidade">           
+            Quantity: <input type="number" name="quantidade" required="required">           
             Produto: 
             <select name="produto.id">
                 {{#vetProduto}}
@@ -21,5 +21,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="hidden" name="venda.id" value="{{venda_id}}">           
             <input type="submit" value="Add">
         </form>
+        <a href="javascript:void(0)" onclick="history.go(-1)">Back</a>
     </body>
 </html>

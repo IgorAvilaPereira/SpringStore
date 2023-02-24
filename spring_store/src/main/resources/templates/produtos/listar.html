@@ -3,15 +3,15 @@
         <title>Products</title>
         <link rel="stylesheet" href="/estilo.css"/>
     </head>
-    <body>
-        
+    <body>        
         <h1>Products</h1>
         <ul>
             {{#vetProduto}}
             <li><a href="/produtos/deletar/{{id}}">Remove</a> <a href="/produtos/tela_editar/{{id}}">Edit</a>  {{descricao}}</li>
             {{/vetProduto}}
         </ul>
-        <a href="/produtos/tela_adicionar">Add</a>
+        <a href="/produtos/tela_adicionar">Add</a> <br>
+        <a href="/">Back</a>
     </body>
 </html>
 
