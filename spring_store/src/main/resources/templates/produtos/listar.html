@@ -1,13 +1,16 @@
 <html>
     <head>
-        <title>title</title>
+        <title>Products</title>
         <link rel="stylesheet" href="/estilo.css"/>
     </head>
     <body>
-        <h1>Lista de Produtos</h1>
+        <h1>Orders</h1>
+        <a href="/vendas/tela_adicionar">New</a>
+        
+        <h1>Products</h1>
         <ul>
             {{#vetProduto}}
-            <li><a href="/produtos/deletar/{{id}}">Deletar</a> <a href="/produtos/tela_editar/{{id}}">Editar</a>  {{descricao}}</li>
+            <li><a href="/produtos/deletar/{{id}}">Remove</a> <a href="/produtos/tela_editar/{{id}}">Editar</a>  {{descricao}}</li>
             {{/vetProduto}}
         </ul>
         <a href="/produtos/tela_adicionar">Adicionar</a>
