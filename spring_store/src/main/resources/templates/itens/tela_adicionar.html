@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <h1>New Item - Order # {{venda_id}}</h1>
         <form action="/itens/adicionar" method="post">            
             Quantity: <input type="number" name="quantidade" required="required">           
-            Produto: 
+            Product: 
             <select name="produto.id">
                 {{#vetProduto}}
                 <<option value="{{id}}">{{descricao}}</option>

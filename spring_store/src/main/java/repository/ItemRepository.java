@@ -35,12 +35,12 @@ public class ItemRepository implements IRepository<Item> {
 
     @Override
     public List<Item> list() {
-        String sqlSelectByVenda = "SELECT item.id as id, item.quantidade as quantidade, item.produto_id, produto.descricao, produto.estoque, item.venda_id, venda.data_hora from item inner join produto on (item.produto_id = produto.id) inner join venda on (venda.id = item.venda_id) order by venda.data desc;";
+        String sqlSelectByVenda = "SELECT item.id as id, item.quantidade as quantidade, item.produto_id, produto.descricao, produto.estoque, produto.preco, item.venda_id, venda.data_hora from item inner join produto on (item.produto_id = produto.id) inner join venda on (venda.id = item.venda_id) order by venda.data desc;";
         return jdbcTemplate.query(sqlSelectByVenda, new Item());                
     }    
     
     public List<Item> list(int venda_id) {
-        String sqlSelectByVenda = "SELECT item.id as id, item.quantidade as quantidade, item.produto_id, produto.descricao, produto.estoque, item.venda_id, venda.data_hora from item inner join produto on (item.produto_id = produto.id) inner join venda on (venda.id = item.venda_id) WHERE item.venda_id = ?";
+        String sqlSelectByVenda = "SELECT item.id as id, item.quantidade as quantidade, item.produto_id, produto.descricao, produto.estoque, produto.preco, item.venda_id, venda.data_hora from item inner join produto on (item.produto_id = produto.id) inner join venda on (venda.id = item.venda_id) WHERE item.venda_id = ?";
         return jdbcTemplate.query(sqlSelectByVenda, new Item(), venda_id);        
     }
 
@@ -52,7 +52,7 @@ public class ItemRepository implements IRepository<Item> {
 
     @Override
     public Item load(int id) {
-        String sqlSelectByVenda = "SELECT item.id as id, item.quantidade as quantidade, item.produto_id, produto.descricao, produto.estoque, item.venda_id, venda.data_hora from item inner join produto on (item.produto_id = produto.id) inner join venda on (venda.id = item.venda_id) WHERE item.id = ?";
+        String sqlSelectByVenda = "SELECT item.id as id, item.quantidade as quantidade, item.produto_id, produto.descricao, produto.estoque, produto.preco, item.venda_id, venda.data_hora from item inner join produto on (item.produto_id = produto.id) inner join venda on (venda.id = item.venda_id) WHERE item.id = ?";
         return jdbcTemplate.queryForObject(sqlSelectByVenda, new Item(), id);        
     }
 }

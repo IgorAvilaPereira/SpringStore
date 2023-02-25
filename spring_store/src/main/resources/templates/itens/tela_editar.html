@@ -11,6 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
        <h1>Edit Item #{{item_id}}</h1>
+       <h2>Product: {{produto_descricao}} </h2>
        <form action="/itens/editar" method="post">            
             Quantity: <input type="number" name="quantidade" value="{{quantidade}}">                                   
             <input type="hidden" name="item_id" value="{{item_id}}">           
