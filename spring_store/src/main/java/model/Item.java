@@ -14,28 +14,29 @@ import org.springframework.jdbc.core.RowMapper;
  * @author iapereira
  */
 public class Item implements RowMapper<Item> {
+
     private int id;
     private double quantidade;
     private Produto produto;
     private Venda venda;
 
+//    de repente deslocar isso para o ItemRepository (como metodo, como uma classe privada/interna ou etc.)
     @Override
     public Item mapRow(ResultSet rs, int rowNum) throws SQLException {
         Item item = new Item();
         item.setId(rs.getInt("id"));
         item.setQuantidade(rs.getDouble("quantidade"));
-        Produto produto = new Produto();
-        produto.setId(rs.getInt("produto_id"));
-        produto.setDescricao(rs.getString("descricao"));
-        produto.setEstoque(rs.getDouble("estoque"));
-        produto.setPreco(rs.getDouble("preco"));
-        item.setProduto(produto);
-        Venda venda = new Venda();
-        venda.setId(rs.getInt("venda_id"));
-        venda.setDataHora(rs.getTimestamp("data_hora").toLocalDateTime().toLocalDate());
-        item.setVenda(venda);
+        Produto itemProduto = new Produto();
+        itemProduto.setId(rs.getInt("produto_id"));
+        itemProduto.setDescricao(rs.getString("descricao"));
+        itemProduto.setEstoque(rs.getDouble("estoque"));
+        itemProduto.setPreco(rs.getDouble("preco"));
+        item.setProduto(itemProduto);
+        Venda itemVenda = new Venda();
+        itemVenda.setId(rs.getInt("venda_id"));
+        itemVenda.setDataHora(rs.getTimestamp("data_hora").toLocalDateTime().toLocalDate());
+        item.setVenda(itemVenda);
         return item;
-
     }
 
     public Item() {
