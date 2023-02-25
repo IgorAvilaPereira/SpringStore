@@ -20,7 +20,7 @@ public class Item implements RowMapper<Item> {
     private Produto produto;
     private Venda venda;
 
-//    de repente deslocar isso para o ItemRepository (como metodo, como uma classe privada/interna ou etc.)
+//  pendente => de repente deslocar isso para o ItemRepository (como metodo, como uma classe privada/interna ou etc.)
     @Override
     public Item mapRow(ResultSet rs, int rowNum) throws SQLException {
         Item item = new Item();

@@ -25,7 +25,7 @@ public class VendaRepository implements IRepository<Venda> {
 
     @Override
     public void delete(int id) {
-//      fazer uma trigger/stored procedure que retome ao estoque as quantidades dos itens para o estoque (produto)
+//      pendente => fazer uma trigger/stored procedure que retome ao estoque as quantidades dos itens para o estoque (produto)
         String sqlDelete = "DELETE FROM venda where id = ?";
         jdbcTemplate.update(sqlDelete, id);
     }
