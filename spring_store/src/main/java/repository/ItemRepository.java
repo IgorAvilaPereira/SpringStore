@@ -46,6 +46,8 @@ public class ItemRepository implements IRepository<Item> {
 
     @Override
     public void save(Item t) {
+//      fazer uma trigger/stored procedure que teste se um item tem qtde <= ao estoque do produto
+//      além disso, dar baixa (diminuir) o estoque do produto.
         String sqlInsert = "INSERT INTO item (produto_id, venda_id, quantidade) VALUES (?,?,?)";
         jdbcTemplate.update(sqlInsert, t.getProduto().getId(), t.getVenda().getId(), t.getQuantidade());
     }
