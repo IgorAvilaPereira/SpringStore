@@ -28,10 +28,7 @@ import repository.VendaRepository;
 @Controller
 @RequestMapping(value = "/itens")
 @ComponentScan("repository.")
-public class ItemController {
-    
-    @Autowired
-    private VendaRepository vendaRepository;
+public class ItemController {    
 
     @Autowired
     private ItemRepository itemRepository;
@@ -61,7 +58,6 @@ public class ItemController {
         double total = 0;
         for (int i = 0; i < vetItem.size(); i++) {
             Item item = vetItem.get(i);
-//            System.out.println(item);
             total+= item.getQuantidade()*item.getProduto().getPreco();            
         }
         template.put("vetItem", vetItem);
