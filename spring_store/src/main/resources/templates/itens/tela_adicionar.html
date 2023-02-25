@@ -10,6 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        {{^message}}            
         <h1>New Item - Order # {{venda_id}}</h1>
         <form action="/itens/adicionar" method="post">            
             Quantity: <input type="number" name="quantidade" required="required">           
@@ -22,6 +23,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="hidden" name="venda.id" value="{{venda_id}}">           
             <input type="submit" value="Add">
         </form>
+        {{/message}}
+        {{#message}}
+            {{message}}
+        {{/message}}
         <a href="javascript:void(0)" onclick="history.go(-1)">Back</a>
     </body>
 </html>

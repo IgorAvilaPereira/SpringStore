@@ -39,14 +39,13 @@ public class ItemController {
     public ModelAndView tela_adicionar(@PathVariable("venda_id") int venda_id) {
         Map<String, Object> template = new HashMap();
         List<Produto> vetProduto = this.produtoRepository.list(venda_id);
-//         pendente => verificar se todos os produtos ja foram anteriormente adicionados ao pedido de venda
-//        if (!vetProduto.isEmpty()) {
-        template.put("venda_id", venda_id);
-        template.put("vetProduto", vetProduto);
+        if (!vetProduto.isEmpty()) {
+            template.put("venda_id", venda_id);
+            template.put("vetProduto", vetProduto);
+        } else {
+            template.put("message", "without more products");
+        }
         return new ModelAndView("itens/tela_adicionar", template);
-//        } else {
-//            return "There are no more products to add";
-//        }
     }
 
     @PostMapping("/adicionar")
