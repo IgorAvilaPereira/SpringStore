@@ -27,6 +27,7 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView index() {
         Map<String, Object> template = new HashMap();
+//      pendente => mostrar a tb a hora da venda (pedido). No BD eh gravado mas aqui nao esta aparecendo.
         template.put("vetVenda", this.vendaRepository.list());
         return new ModelAndView("index", template);
     }
