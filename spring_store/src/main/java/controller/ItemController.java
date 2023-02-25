@@ -55,6 +55,7 @@ public class ItemController {
         Map<String, Object> template = new HashMap();
         template.put("venda_id", venda_id);
         List<Item> vetItem  = this.itemRepository.list(venda_id);
+//      pendente => colocar o calculo do total ou na classe de model, ou na propria consulta sql (no repositorio)
         double total = 0;
         for (int i = 0; i < vetItem.size(); i++) {
             Item item = vetItem.get(i);
