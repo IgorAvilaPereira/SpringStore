@@ -37,7 +37,8 @@ public class ProdutoController {
     @PostMapping("/adicionar")
     public ModelAndView adicionar(Produto produto) {
         this.produtoRepository.save(produto);
-        return this.listar();
+//        return this.listar();
+        return new ModelAndView("redirect:/produtos/listar");
     }
 
     @GetMapping({"/", "/listar"})
@@ -50,7 +51,8 @@ public class ProdutoController {
     @GetMapping("/deletar/{id}")
     public ModelAndView deletar(@PathVariable("id") int id) {
         this.produtoRepository.delete(id);
-        return this.listar();
+//        return this.listar();
+        return new ModelAndView("redirect:/produtos/listar");
     }
 
     @GetMapping("/tela_editar/{id}")
@@ -63,6 +65,7 @@ public class ProdutoController {
     @PostMapping("/editar")
     public ModelAndView editar(Produto produto) {
         this.produtoRepository.update(produto);
-        return this.listar();
+//        return this.listar();
+        return new ModelAndView("redirect:/produtos/listar");
     }
 }

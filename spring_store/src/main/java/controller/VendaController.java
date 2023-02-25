@@ -25,23 +25,15 @@ import repository.VendaRepository;
 @RequestMapping(value = "/vendas")
 @ComponentScan("repository.")
 public class VendaController {
+
     @Autowired
     private VendaRepository vendaRepository;
-    @Autowired
-    private ItemController itemController;
-    @Autowired
-    private HomeController homeController;
-
-    /*
-    @GetMapping("/tela_adicionar")
-    public ModelAndView tela_adicionar() {
-        return new ModelAndView("vendas/tela_adicionar");
-    }*/
-
+    
+    
     @GetMapping("/adicionar")
     public ModelAndView adicionar(Venda venda) {
         this.vendaRepository.save(venda);
-        return this.itemController.listar(venda.getId());
+        return new ModelAndView("redirect:/itens/listar/" + venda.getId());
     }
 
     @GetMapping({"/", "/listar"})
@@ -54,7 +46,7 @@ public class VendaController {
     @GetMapping("/deletar/{id}")
     public ModelAndView deletar(@PathVariable("id") int id) {
         this.vendaRepository.delete(id);
-        return this.homeController.index();
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping("/tela_editar/{id}")
@@ -67,6 +59,6 @@ public class VendaController {
     @PostMapping("/editar")
     public ModelAndView editar(Venda venda) {
         this.vendaRepository.update(venda);
-        return this.listar();
+        return new ModelAndView("redirect:/vendas/listar");
     }
 }
