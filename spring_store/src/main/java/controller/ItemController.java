@@ -51,6 +51,7 @@ public class ItemController {
     @GetMapping({"/{venda_id}", "/listar/{venda_id}"})
     public ModelAndView listar(@PathVariable("venda_id") int venda_id) {
         Map<String, Object> template = new HashMap();
+        // mandar tb a soma/valor total => pendente
         template.put("venda_id", venda_id);
         template.put("vetItem", this.itemRepository.list(venda_id));
         return new ModelAndView("itens/listar", template);
