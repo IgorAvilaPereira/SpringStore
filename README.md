@@ -12,3 +12,5 @@ CRUD de uma base de dados PostgreSQL de Pedidos, Itens e Produtos com Spring MVC
 3) Execute o projeto
 
 4) E acesse http://localhost:8080
+
+* obs: a porta pode mudar dependendo dos serviços que rodam na máquina
