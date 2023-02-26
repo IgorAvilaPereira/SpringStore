@@ -7,7 +7,7 @@ CRUD de uma base de dados PostgreSQL de Pedidos, Itens e Produtos com Spring MVC
 2) Importe o projeto na sua IDE de preferência (Netbeans, Eclipse e etc.)
 
 * obs: ajuste os parâmetros de conexão do B.D no arquivo 
-[application.properties](https://github.com/IgorAvilaPereira/SpringStore/blob/main/spring_store/src/main/resources/application.properties
+[application.properties](https://github.com/IgorAvilaPereira/SpringStore/blob/main/spring_store/src/main/resources/application.properties)
 
 3) Execute o projeto
 
