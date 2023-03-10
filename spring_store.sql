@@ -1,6 +1,5 @@
 DROP DATABASE IF EXISTS spring_store;
 
-DROP DATABASE IF EXISTS spring_store;
 CREATE DATABASE spring_store;
 
 \c spring_store;
