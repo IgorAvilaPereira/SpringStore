@@ -32,7 +32,6 @@ public class VendaRepository implements IRepository<Venda> {
 
     @Override
     public List<Venda> list() {
-//      pendente => colocar os itens, permitindo saber quais itens tem cada venda (pedido)
         return jdbcTemplate.query("SELECT * from venda", BeanPropertyRowMapper.newInstance(Venda.class));
     }
 

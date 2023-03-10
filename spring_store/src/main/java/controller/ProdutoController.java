@@ -40,7 +40,7 @@ public class ProdutoController {
         return new ModelAndView("redirect:/produtos/listar");
     }
 
-    @GetMapping({"/", "/listar"})
+    @GetMapping({"","/", "/listar"})
     public ModelAndView listar() {
         Map<String, Object> template = new HashMap();
         template.put("vetProduto", this.produtoRepository.list());

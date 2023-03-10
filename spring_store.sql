@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS spring_store;
 
+DROP DATABASE IF EXISTS spring_store;
 CREATE DATABASE spring_store;
 
 \c spring_store;
@@ -8,6 +9,7 @@ CREATE TABLE produto (
     id serial primary key,
     descricao text not null,
     preco double precision,
+   -- status boolean default true,
     estoque double precision
 );
 
@@ -19,6 +21,7 @@ CREATE TABLE venda (
 CREATE TABLE item ( 
     id serial primary key,
     quantidade double precision,
+    -- valor_unitario double precision,
     produto_id integer references produto (id),
     venda_id integer references venda (id) ON DELETE CASCADE,
     UNIQUE(produto_id, venda_id)
