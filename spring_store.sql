@@ -5,6 +5,14 @@ CREATE DATABASE spring_store;
 
 \c spring_store;
 
+/*
+CREATE TABLE vendedor (
+    id serial primary key,
+    email text not null,
+    senha text not null,
+    unique(email)
+);*/ 
+
 CREATE TABLE produto (
     id serial primary key,
     descricao text not null,
@@ -15,6 +23,7 @@ CREATE TABLE produto (
 
 CREATE TABLE venda (
     id serial primary key,
+    -- vendedor_id integer references vendedor (id),
     data_hora timestamp default current_timestamp
 );
 
